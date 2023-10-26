@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список книг</title>
+  <style>
+    .book {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .book:hover {
+      background-color: lightgray;
+    }
+
+    .book.selected {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="book" onclick="toggleBookColor(this)">Книга 1</li>
+    <li class="book" onclick="toggleBookColor(this)">Книга 2</li>
+    <li class="book" onclick="toggleBookColor(this)">Книга 3</li>
+  </ul>
+
+  <script>
+    let selectedBook = null;
+
+    function toggleBookColor(book) {
+      if (selectedBook) {
+        selectedBook.classList.remove('selected');
+      }
+      book.classList.add('selected');
+      selectedBook = book;
+    }
+  </script>
+</body>
+</html>

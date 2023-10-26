@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Футбольне поле з м'ячем</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    #field {
+      width: 100%;
+      height: 100%;
+      background-color: green;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #ball {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      transition: transform 0.3s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="field" onclick="moveBall(event)">
+    <div id="ball"></div>
+  </div>
+
+  <script>
+    function moveBall(event) {
+      const field = document.getElementById('field');
+      const ball = document.getElementById('ball');
+
+      const fieldRect = field.getBoundingClientRect();
+      const ballRect = ball.getBoundingClientRect();
+
+      const fieldX = fieldRect.left;
+      const fieldY = fieldRect.top;
+
+      let mouseX = event.clientX - fieldX - ballRect.width / 2;
+      let mouseY = event.clientY - fieldY - ballRect.height / 2;
+
+      mouseX = Math.max(0, Math.min(mouseX, fieldRect.width - ballRect.width));
+      mouseY = Math.max(0, Math.min(mouseY, fieldRect.height - ballRect.height));
+
+      ball.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    }
+  </script>
+</body>
+</html>

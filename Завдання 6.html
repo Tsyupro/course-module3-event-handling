@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 200px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+  </style>
+  <script>
+    function showTooltip(button) {
+      const tooltip = button.nextElementSibling;
+      const buttonRect = button.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      if (buttonRect.top >= tooltipRect.height) {
+        tooltip.style.top = "-30px";
+      } else {
+        tooltip.style.top = "30px";
+      }
+    }
+  </script>
+  <title>Підказки для кнопок</title>
+</head>
+<body>
+  <div style="text-align: center;">
+    <div class="tooltip">
+      <button onmouseover="showTooltip(this)">Кнопка 1</button>
+      <span class="tooltiptext">Це підказка для кнопки 1</span>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <div class="tooltip">
+      <button onmouseover="showTooltip(this)">Кнопка 2</button>
+      <span class="tooltiptext">Це підказка для кнопки 2</span>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 50px;">
+    <div class="tooltip">
+      <button onmouseover="showTooltip(this)">Кнопка 3</button>
+      <span class="tooltiptext">Це підказка для кнопки 3</span>
+    </div>
+  </div>
+</body>
+</html>
